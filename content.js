@@ -17,17 +17,23 @@ function displayIndexedResults() {
     indexedResultsDiv.style.maxHeight = "300px";
     indexedResultsDiv.style.overflowY = "scroll";
     
+    // Get the result stats element
+    const resultStats = document.getElementById("result-stats");
+    let resultCount = "Unknown";
+    if (resultStats) {
+      const match = resultStats.innerText.match(/About ([\d,]+)/);
+      if (match) {
+        resultCount = match[1];
+      }
+    }
+
     // Create the heading for indexed results
     const heading = document.createElement("h3");
-    heading.innerHTML = "Indexed Results <span id='result-count'></span>";
+    heading.innerHTML = `Indexed Results (${resultCount} results)`;
     indexedResultsDiv.appendChild(heading);
 
     // Get all the search results
     const searchResults = document.querySelectorAll('.g');
-    const resultCount = searchResults.length;
-
-    // Update the result count in the heading
-    heading.querySelector('#result-count').textContent = `(${resultCount})`;
 
     searchResults.forEach(result => {
       const link = result.querySelector('a');
@@ -52,10 +58,6 @@ function displayIndexedResults() {
     // Append the indexed results div to the body
     document.body.appendChild(indexedResultsDiv);
   }
-}
-
-// Run the function to display indexed results
-displayIndexedResults();
 }
 
 // Run the function to display indexed results
