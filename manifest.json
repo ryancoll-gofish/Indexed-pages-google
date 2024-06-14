@@ -1,16 +1,22 @@
 {
   "manifest_version": 3,
-  "name": "Indexed Results Checker",
+  "name": "Show Indexed Results",
   "version": "1.0",
-  "description": "Displays the number of indexed results for a specific site in Google search.",
-  "permissions": ["activeTab"],
-  "action": {
-    "default_popup": "popup.html"
-  },
+  "description": "Show indexed results for site-specific searches.",
+  "permissions": [
+    "activeTab"
+  ],
   "content_scripts": [
     {
       "matches": ["*://*.google.com/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "",
+    "default_icon": {}
+  }
 }
