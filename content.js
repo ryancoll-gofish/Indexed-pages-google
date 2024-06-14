@@ -27,7 +27,7 @@ function displayIndexedResults() {
     const resultCount = searchResults.length;
 
     // Update the result count in the heading
-    document.getElementById('result-count').textContent = `(${resultCount})`;
+    heading.querySelector('#result-count').textContent = `(${resultCount})`;
 
     searchResults.forEach(result => {
       const link = result.querySelector('a');
@@ -51,10 +51,11 @@ function displayIndexedResults() {
 
     // Append the indexed results div to the body
     document.body.appendChild(indexedResultsDiv);
-
-    // Update the result count in the heading (after the results are added)
-    document.getElementById('result-count').textContent = `(${resultCount})`;
   }
+}
+
+// Run the function to display indexed results
+displayIndexedResults();
 }
 
 // Run the function to display indexed results
