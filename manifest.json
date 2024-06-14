@@ -1,6 +1,21 @@
-<html>
-  <body>
-    <h1>Hello Extensions</h1>
-    <script src="popup.js"></script>
-  </body>
-</html>
+{
+  "manifest_version": 3,
+  "name": "Indexed Results Checker",
+  "version": "1.0",
+  "description": "Displays the number of indexed results for a specific site in Google search.",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
